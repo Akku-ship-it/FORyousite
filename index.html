@@ -22,11 +22,21 @@ button{margin-top:12px;padding:12px;width:100%;border:none;border-radius:12px;ba
 <textarea id="m3" placeholder="Message 3"></textarea>
 <textarea id="m4" placeholder="Message 4"></textarea>
 <button onclick="createLink()">Create Link ❤️</button>
+<button id="copyBtn">Copy Link 🌹</button>
 <p id="link"></p>
 </div>
 
 <script>
-function createLink(){
+function createLink(){document.getElementById("copyBtn").onclick = function() {
+    let link = document.getElementById("link").innerText;
+    if(link){
+        navigator.clipboard.writeText(link)
+        .then(()=>alert("Link copied to clipboard! 🌹"))
+        .catch(()=>alert("Copy failed 😅"));
+    } else {
+        alert("Pehle link generate karo!");
+    }
+};
  let y=document.getElementById("your").value;
  let t=document.getElementById("their").value;
  let m1=document.getElementById("m1").value;

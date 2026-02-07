@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<style>
+body{margin:0;background:black;overflow:hidden;font-family:Segoe UI;color:white;text-align:center;}
+.stars{position:fixed;width:100%;height:100%;background:url("https://i.imgur.com/YKY28eT.png") repeat;animation: moveStars 200s linear infinite;z-index:-2;}
+@keyframes moveStars{from{background-position:0 0;}to{background-position:10000px 5000px;}}
+.rose-fall{
+ position:absolute;
+ font-size:42px;
+ cursor:pointer;
+ animation: fall linear infinite;
+}
+
+/* Down Fall */
+@keyframes fall{
+ from{transform:translateY(-60px);}
+ to{transform:translateY(110vh);}
+}
+
+/* Wind Flow */
+@keyframes sway{
+ 0%{margin-left:0px;}
+ 50%{margin-left:60px;}
+ 100%{margin-left:-60px;}
+}
+
+/* Spin */
+@keyframes spin{
+ from{rotate:0deg;}
+ to{rotate:360deg;}
+}
+@keyframes fall{from{transform:translateY(-50px);}to{transform:translateY(110vh);}}
+.messageBox{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;opacity:0;transition:1.5s;}
+.show{opacity:1;}
+.bigRose{
+ font-size:200px;
+ animation: float 4s infinite ease-in-out, heartbeat 2s infinite;
+ filter: drop-shadow(0 0 10px red) drop-shadow(0 0 20px pink);
+ transform-style: preserve-3d;
+}
+
+/* Floating 3D Effect */
+@keyframes float{
+ 0%{transform:translateY(0) rotateY(0deg);}
+ 50%{transform:translateY(-25px) rotateY(25deg);}
+ 100%{transform:translateY(0) rotateY(0deg);}
+}
+
+/* Heartbeat Effect */
+@keyframes heartbeat{
+ 0%{transform: scale(1);}
+ 25%{transform: scale(1.1);}
+ 40%{transform: scale(1);}
+ 60%{transform: scale(1.15);}
+ 100%{transform: scale(1);}
+}
+@keyframes float{0%{transform:translateY(0) rotateY(0deg);}50%{transform:translateY(-20px) rotateY(15deg);}100%{transform:translateY(0) rotateY(0deg);}}
+.proposal{font-size:28px;margin-top:15px;}
+.msg{display:none;margin-top:10px;font-size:20px;}
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<div class="shooting-star"></div>
+
+<div class="messageBox" id="loveBox">
+<h2 id="title"></h2>
+<div class="bigRose">🌹</div>
+<div class="proposal">Will You Be Mine Forever Kiddo ki beti❤️</div>
+<div id="msg1" class="msg"></div>
+<div id="msg2" class="msg"></div>
+<div id="msg3" class="msg"></div>
+<div id="msg4" class="msg"></div>
+</div>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let p=new URLSearchParams(window.location.search);
+document.getElementById("title").innerText=p.get("y")+" ❤️ "+p.get("t");
+document.getElementById("msg1").innerText=p.get("m1");
+document.getElementById("msg2").innerText=p.get("m2");
+document.getElementById("msg3").innerText=p.get("m3");
+document.getElementById("msg4").innerText=p.get("m4");
+
+/* Falling Roses */
+let roses = ["🌹","🌷","🌸","🌺","💮"];
+
+for(let i=0;i<30;i++){
+
+ let rose=document.createElement("div");
+
+ rose.innerHTML=roses[Math.floor(Math.random()*roses.length)];
+
+ rose.className="rose-fall";
+
+ rose.style.left=Math.random()*100+"vw";
+
+ rose.style.animationDuration=(6+Math.random()*6)+"s";
+
+ rose.style.animationDelay=(Math.random()*5)+"s";
+
+ rose.style.opacity=0.6+Math.random()*0.4;
+
+ rose.onclick=revealLove;
+
+ document.body.appendChild(rose);
+}
+
+/* Reveal Messages & Play Music */
+let clickCount = 0;
+
+function revealLove(){
+
+ if(clickCount === 0){
+   document.getElementById("loveBox").classList.add("show");
+   document.getElementById("music").play();
+ }
+
+ clickCount++;
+
+ if(clickCount === 1){
+   document.getElementById("msg1").style.display="block";
+ }
+
+ if(clickCount === 2){
+   document.getElementById("msg2").style.display="block";
+ }
+
+ if(clickCount === 3){
+   document.getElementById("msg3").style.display="block";
+ }
+
+ if(clickCount === 4){
+   document.getElementById("msg4").style.display="block";
+ }
+
+}
+
+</script>
+</body>
+</html>

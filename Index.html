@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rose Day ❤️</title>
+<style>
+body{margin:0;height:100vh;display:flex;justify-content:center;align-items:center;font-family:'Segoe UI';background: linear-gradient(135deg,#ff758c,#ff7eb3);}
+.card{background:white;padding:30px;width:350px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.2);text-align:center;}
+input,textarea{width:100%;padding:10px;margin:8px 0;border-radius:10px;border:1px solid #ddd;font-size:14px;}
+button{margin-top:12px;padding:12px;width:100%;border:none;border-radius:12px;background:#ff4d6d;color:white;font-size:16px;cursor:pointer;}
+#link{margin-top:10px;font-size:12px;word-break:break-all;color:#333;}
+</style>
+</head>
+<body>
+<div class="card">
+<h2>🌹 Create Your Love Link</h2>
+<input id="your" placeholder="Your Name">
+<input id="their" placeholder="Their Name">
+<textarea id="m1" placeholder="Message 1"></textarea>
+<textarea id="m2" placeholder="Message 2"></textarea>
+<textarea id="m3" placeholder="Message 3"></textarea>
+<textarea id="m4" placeholder="Message 4"></textarea>
+<button onclick="createLink()">Create Link ❤️</button>
+<p id="link"></p>
+</div>
+
+<script>
+function createLink(){
+ let y=document.getElementById("your").value;
+ let t=document.getElementById("their").value;
+ let m1=document.getElementById("m1").value;
+ let m2=document.getElementById("m2").value;
+ let m3=document.getElementById("m3").value;
+ let m4=document.getElementById("m4").value;
+ if(!y||!t){alert("Enter your name and their name!");return;}
+ let url="rose.html?y="+encodeURIComponent(y)+"&t="+encodeURIComponent(t)+"&m1="+encodeURIComponent(m1)+"&m2="+encodeURIComponent(m2)+"&m3="+encodeURIComponent(m3)+"&m4="+encodeURIComponent(m4);
+ document.getElementById("link").innerHTML="<a href='"+url+"' target='_blank'>Open Your Love Link 🌹</a>";
+}
+</script>
+</body>
+</html>

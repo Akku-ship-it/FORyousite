@@ -28,8 +28,9 @@ button{margin-top:12px;padding:12px;width:100%;border:none;border-radius:12px;ba
 
 <script>
 function createLink(){document.getElementById("copyBtn").onclick = function() {
-    let link = document.getElementById("link").innerText;
-    if(link){
+    let aTag = document.querySelector("#link a"); // <a> tag select kar
+    if(aTag){
+        let link = aTag.href; // href ko copy kar
         navigator.clipboard.writeText(link)
         .then(()=>alert("Link copied to clipboard! 🌹"))
         .catch(()=>alert("Copy failed 😅"));
